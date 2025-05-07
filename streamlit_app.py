@@ -4,9 +4,18 @@ from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 
 
-df1 = pd.read_csv("cleaned_no_decimal_part1.csv")
-df2 = pd.read_csv("cleaned_no_decimal_part2.csv")
-df = pd.concat([df1, df2], ignore_index=True)
+# List of file names
+files = ['part1.csv', 'part2.csv', 'part3.csv', 'part4.csv', 'part5.csv']
+
+# Load part1 with header, rest with header skipped
+dfs = [pd.read_csv(files[0])] + [pd.read_csv(f, skiprows=1) for f in files[1:]]
+
+# Concatenate all parts
+df_full = pd.concat(dfs, ignore_index=True)
+
+# Save combined file
+df.to_csv('cleaned_no_decimal_combined.csv', index=False)
+
 
 # Drop missing
 df = df.dropna(subset=["NUMBER OF INDIVIDUALS", "ASSOCIATION COUNT"])
