@@ -3,19 +3,12 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 
-# Load data
-import pandas as pd
-import gdown
 
-# Google Drive file ID (extracted from your URL)
-file_id = "1Nmme3qwGGhzxi741DCkWMobltZ3x8PZB"
-url = f"https://drive.google.com/uc?id=cleaned_no_decimal.csv"
+df1 = pd.read_csv("cleaned_no_decimal_part1.csv")
+df2 = pd.read_csv("cleaned_no_decimal_part2.csv")
+df = pd.concat([df1, df2], ignore_index=True)
 
-# Download the file and read into DataFrame
-gdown.download(url, "cleaned_no_decimal.csv", quiet=False)
-df = pd.read_csv("cleaned_no_decimal.csv")
-
-# Optional: Drop missing
+# Drop missing
 df = df.dropna(subset=["NUMBER OF INDIVIDUALS", "ASSOCIATION COUNT"])
 
 # Sidebar
