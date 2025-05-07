@@ -4,8 +4,18 @@ from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 
 # Load data
+import pandas as pd
+import gdown
+
+# Google Drive file ID (extracted from your URL)
+file_id = "1Nmme3qwGGhzxi741DCkWMobltZ3x8PZB"
+url = f"https://drive.google.com/uc?id=cleaned_no_decimal.csv"
+
+# Download the file and read into DataFrame
+gdown.download(url, "cleaned_no_decimal.csv", quiet=False)
 df = pd.read_csv("cleaned_no_decimal.csv")
-df = pd.read_csv("https://drive.google.com/file/d/1Nmme3qwGGhzxi74lDCkwMobltZ3x8PZB/view?usp=drive_link")
+
+# Optional: Drop missing
 df = df.dropna(subset=["NUMBER OF INDIVIDUALS", "ASSOCIATION COUNT"])
 
 # Sidebar
