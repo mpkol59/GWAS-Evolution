@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 # Load data
 df = pd.read_csv("cleaned_no_decimal.csv")
+df = pd.read_csv("https://drive.google.com/file/d/1Nmme3qwGGhzxi74lDCkwMobltZ3x8PZB/view?usp=drive_link")
 df = df.dropna(subset=["NUMBER OF INDIVIDUALS", "ASSOCIATION COUNT"])
 
 # Sidebar
