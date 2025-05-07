@@ -11,7 +11,7 @@ files = ['part1.csv', 'part2.csv', 'part3.csv', 'part4.csv', 'part5.csv']
 dfs = [pd.read_csv(files[0])] + [pd.read_csv(f, skiprows=1) for f in files[1:]]
 
 # Concatenate all parts
-df_full = pd.concat(dfs, ignore_index=True)
+df = pd.concat(dfs, ignore_index=True)
 
 # Save combined file
 df.to_csv('cleaned_no_decimal_combined.csv', index=False)
